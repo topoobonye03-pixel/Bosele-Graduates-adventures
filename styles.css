@@ -153,3 +153,36 @@ body{background:#f7f0e4}
 @media(max-width:1100px){.four-cards{grid-template-columns:repeat(2,1fr)!important}.brand-tagline{font-size:14px}.brand{min-width:280px}}
 @media(max-width:900px){.brand{min-width:auto}.brand-tagline{display:none}.four-cards{grid-template-columns:1fr!important}.home-category-grid{grid-template-columns:1fr 1fr}.partner-banner{padding:32px;min-height:360px}}
 @media(max-width:560px){.home-category-grid{grid-template-columns:1fr}.home-cat{min-height:180px}.partner-banner{padding:24px}.contact-visual-small{grid-template-columns:1fr!important}}
+/* Mobile menu fix */
+@media (max-width: 900px) {
+  .site-header {
+    z-index: 200 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .navlinks {
+    z-index: 220 !important;
+    background: #fffaf2 !important;
+    pointer-events: auto !important;
+  }
+
+  .nav-toggle {
+    z-index: 230 !important;
+    position: relative !important;
+  }
+
+  .menu-backdrop {
+    z-index: 190 !important;
+    background: rgba(0,0,0,.55) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .navlinks a {
+    position: relative !important;
+    z-index: 221 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+  }
+}
