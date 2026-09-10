@@ -186,3 +186,16 @@ body{background:#f7f0e4}
     cursor: pointer !important;
   }
 }
+/* Show Bosele slogan on mobile */
+@media (max-width: 900px) {
+  .brand-tagline,
+  .logo-tagline,
+  .brand-slogan {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+  }
+}
