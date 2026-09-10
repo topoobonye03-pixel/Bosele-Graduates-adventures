@@ -199,3 +199,25 @@ body{background:#f7f0e4}
     white-space: nowrap !important;
   }
 }
+/* Improve Graduate & Student section readability */
+#graduates {
+  color: #123b2a !important;
+}
+
+#graduates h1,
+#graduates h2,
+#graduates h3 {
+  color: #123b2a !important;
+  text-shadow: none !important;
+}
+
+#graduates p,
+#graduates .lead,
+#graduates .eyebrow {
+  color: #4f5f54 !important;
+}
+
+#graduates .eyebrow {
+  color: #9a4b12 !important;
+  font-weight: 800 !important;
+}
