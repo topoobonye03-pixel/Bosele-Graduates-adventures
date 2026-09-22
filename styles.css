@@ -221,3 +221,178 @@ body{background:#f7f0e4}
   color: #9a4b12 !important;
   font-weight: 800 !important;
 }
+/* ===== Bosele AI Safari Planner ===== */
+
+#bosele-ai-button {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 9998;
+  border: none;
+  border-radius: 50px;
+  padding: 15px 22px;
+  background: #123b2a;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0,0,0,.22);
+}
+
+#bosele-ai-button:hover {
+  transform: translateY(-2px);
+}
+
+#bosele-ai-chat {
+  position: fixed;
+  right: 24px;
+  bottom: 88px;
+  width: 380px;
+  max-width: calc(100vw - 32px);
+  height: 540px;
+  max-height: calc(100vh - 120px);
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  z-index: 9999;
+  box-shadow: 0 15px 45px rgba(0,0,0,.25);
+  display: none;
+}
+
+#bosele-ai-chat.open {
+  display: flex;
+  flex-direction: column;
+}
+
+.bosele-ai-header {
+  background: #123b2a;
+  color: #ffffff;
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bosele-ai-header strong {
+  display: block;
+  font-size: 16px;
+}
+
+.bosele-ai-header small {
+  display: block;
+  margin-top: 3px;
+  opacity: .8;
+}
+
+#bosele-ai-close {
+  background: transparent;
+  color: #ffffff;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.bosele-ai-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  background: #f7f1e7;
+}
+
+.bosele-ai-welcome {
+  background: #ffffff;
+  padding: 12px 14px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  line-height: 1.45;
+  color: #123b2a;
+}
+
+#bosele-ai-messages {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 12px;
+}
+
+.bosele-ai-user-message {
+  background: #123b2a;
+  color: #ffffff;
+  padding: 11px 13px;
+  border-radius: 14px 14px 4px 14px;
+  margin: 8px 0 8px 35px;
+  line-height: 1.45;
+}
+
+.bosele-ai-reply {
+  background: #ffffff;
+  color: #26352e;
+  padding: 11px 13px;
+  border-left: 4px solid #c96b2c;
+  border-radius: 4px 14px 14px 14px;
+  margin: 8px 25px 8px 0;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+#bosele-ai-input {
+  width: 100%;
+  min-height: 72px;
+  max-height: 120px;
+  resize: vertical;
+  border: 1px solid #d8cbb8;
+  border-radius: 12px;
+  padding: 11px;
+  font-family: inherit;
+  font-size: 14px;
+  background: #ffffff;
+  color: #222222;
+}
+
+#bosele-ai-input:focus {
+  outline: 2px solid #c96b2c;
+  border-color: transparent;
+}
+
+#bosele-ai-send {
+  width: 100%;
+  margin-top: 9px;
+  padding: 12px;
+  border: none;
+  border-radius: 11px;
+  background: #123b2a;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#bosele-ai-send:disabled {
+  opacity: .65;
+  cursor: wait;
+}
+
+.bosele-ai-note {
+  display: block;
+  margin-top: 8px;
+  color: #6c746f;
+  text-align: center;
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+@media (max-width: 600px) {
+  #bosele-ai-button {
+    right: 14px;
+    bottom: 14px;
+    padding: 13px 17px;
+  }
+
+  #bosele-ai-chat {
+    right: 12px;
+    bottom: 74px;
+    width: calc(100vw - 24px);
+    height: min(570px, calc(100vh - 95px));
+  }
+}
