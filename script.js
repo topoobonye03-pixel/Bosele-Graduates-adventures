@@ -35,3 +35,111 @@ document.addEventListener('DOMContentLoaded',()=>{
     setInterval(()=>showSlide((i+1)%slides.length),4300);
   });
 });
+// Bosele AI Safari Planner
+const boseleAI = document.createElement('div');
+
+boseleAI.innerHTML = `
+  <button id="bosele-ai-button" aria-label="Open Bosele AI Safari Planner">
+    ✨ Plan with Bosele AI
+  </button>
+
+  <div id="bosele-ai-chat">
+    <div class="bosele-ai-header">
+      <div>
+        <strong>Bosele AI Safari Planner ✨</strong>
+        <small>Learn. Explore. Grow.</small>
+      </div>
+      <button id="bosele-ai-close" aria-label="Close Bosele AI">×</button>
+    </div>
+
+    <div class="bosele-ai-body">
+      <div class="bosele-ai-welcome">
+        Hi! 👋 Tell me about the Botswana adventure you're planning.
+      </div>
+
+      <div id="bosele-ai-messages"></div>
+
+      <textarea
+        id="bosele-ai-input"
+        maxlength="2000"
+        placeholder="Ask about Khwai, Chobe, Moremi, Gold Safari..."
+      ></textarea>
+
+      <button id="bosele-ai-send">Ask Bosele AI</button>
+
+      <small class="bosele-ai-note">
+        AI planning assistance. Confirm prices, dates and availability with Bosele.
+      </small>
+    </div>
+  </div>
+`;
+
+document.body.appendChild(boseleAI);
+
+const aiButton = document.getElementById('bosele-ai-button');
+const aiChat = document.getElementById('bosele-ai-chat');
+const aiClose = document.getElementById('bosele-ai-close');
+const aiSend = document.getElementById('bosele-ai-send');
+const aiInput = document.getElementById('bosele-ai-input');
+const aiMessages = document.getElementById('bosele-ai-messages');
+
+aiButton.addEventListener('click', () => {
+  aiChat.classList.toggle('open');
+});
+
+aiClose.addEventListener('click', () => {
+  aiChat.classList.remove('open');
+});
+
+async function askBoseleAI() {
+  const message = aiInput.value.trim();
+
+  if (!message) return;
+
+  const userMessage = document.createElement('div');
+  userMessage.className = 'bosele-ai-user-message';
+  userMessage.textContent = message;
+  aiMessages.appendChild(userMessage);
+
+  aiInput.value = '';
+  aiSend.disabled = true;
+  aiSend.textContent = 'Planning...';
+
+  const reply = document.createElement('div');
+  reply.className = 'bosele-ai-reply';
+  reply.textContent = 'Bosele AI is thinking...';
+  aiMessages.appendChild(reply);
+
+  aiMessages.scrollTop = aiMessages.scrollHeight;
+
+  try {
+    const response = await fetch(
+      'https://bosele-ai-safari-planner.gboseleadventures.workers.dev/',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || 'Request failed');
+    }
+
+    reply.textContent =
+      data.reply || 'Please contact Bosele Graduates Adventures for assistance.';
+  } catch (error) {
+    reply.textContent =
+      'Sorry, Bosele AI is temporarily unavailable. Please try again.';
+  } finally {
+    aiSend.disabled = false;
+    aiSend.textContent = 'Ask Bosele AI';
+    aiMessages.scrollTop = aiMessages.scrollHeight;
+  }
+}
+
+aiSend.addEventListener('click', askBoseleAI);
