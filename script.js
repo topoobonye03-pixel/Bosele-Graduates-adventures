@@ -52,26 +52,41 @@ boseleAI.innerHTML = `
       <button id="bosele-ai-close" aria-label="Close Bosele AI">×</button>
     </div>
 
-    <div class="bosele-ai-body">
-      <div class="bosele-ai-welcome">
-       Hi! 👋 Tell me where you want to go, your budget, dates, or the kind of adventure you want. I’ll help you shape a Bosele trip.
-      </div>
+  <div class="bosele-ai-body">
 
-      <div id="bosele-ai-messages"></div>
-
-      <textarea
-        id="bosele-ai-input"
-        maxlength="2000"
-        placeholder="Ask about Khwai, Chobe, Savuti, Xakanaxa, Victoria Falls, Gold Safari, budgets..."
-      ></textarea>
-
-      <button id="bosele-ai-send">Ask Bosele AI</button>
-
-      <small class="bosele-ai-note">
-        AI planning assistance. Confirm prices, dates and availability with Bosele.
-      </small>
-    </div>
+  <div class="bosele-ai-welcome">
+    Hi! 👋 Tell me where you want to go, your budget, dates, or the kind of adventure you want. I’ll help you shape a Bosele trip.
   </div>
+
+  <div id="bosele-ai-messages"></div>
+
+  <textarea
+    id="bosele-ai-input"
+    maxlength="2000"
+    placeholder="Ask about Khwai, Chobe, Savuti, Xakanaxa, Victoria Falls, Gold Safari, budgets..."
+  ></textarea>
+
+  <button id="bosele-ai-send">Ask Bosele AI</button>
+
+  <div class="bosele-ai-actions">
+    <a class="bosele-ai-action primary" href="contact.html">
+      Request a Quote
+    </a>
+
+    <a class="bosele-ai-action" href="tel:+26774396369">
+      Call Bosele
+    </a>
+
+    <button type="button" class="bosele-ai-action" id="bosele-ai-new-trip">
+      Start New Trip
+    </button>
+  </div>
+
+  <small class="bosele-ai-note">
+    AI planning assistance. Confirm prices, dates and availability with Bosele.
+  </small>
+
+</div>
 `;
 
 document.body.appendChild(boseleAI);
@@ -143,3 +158,10 @@ async function askBoseleAI() {
 }
 
 aiSend.addEventListener('click', askBoseleAI);
+const newTripButton = document.getElementById('bosele-ai-new-trip');
+
+newTripButton.addEventListener('click', () => {
+  aiMessages.innerHTML = '';
+  aiInput.value = '';
+  aiInput.focus();
+});
