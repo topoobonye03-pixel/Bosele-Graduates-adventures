@@ -54,7 +54,7 @@ boseleAI.innerHTML = `
 
     <div class="bosele-ai-body">
       <div class="bosele-ai-welcome">
-        Hi! 👋 Tell me about the Botswana adventure you're planning.
+       Hi! 👋 Tell me where you want to go, your budget, dates, or the kind of adventure you want. I’ll help you shape a Bosele trip.
       </div>
 
       <div id="bosele-ai-messages"></div>
@@ -62,7 +62,7 @@ boseleAI.innerHTML = `
       <textarea
         id="bosele-ai-input"
         maxlength="2000"
-        placeholder="Ask about Khwai, Chobe, Moremi, Gold Safari..."
+        placeholder="Ask about Khwai, Chobe, Savuti, Xakanaxa, Victoria Falls, Gold Safari, budgets..."
       ></textarea>
 
       <button id="bosele-ai-send">Ask Bosele AI</button>
