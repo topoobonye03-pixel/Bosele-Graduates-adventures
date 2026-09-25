@@ -165,3 +165,11 @@ newTripButton.addEventListener('click', () => {
   aiInput.value = '';
   aiInput.focus();
 });
+const heroAIButton = document.getElementById('hero-bosele-ai-button');
+
+if (heroAIButton) {
+  heroAIButton.addEventListener('click', () => {
+    aiChat.classList.add('open');
+    aiInput.focus();
+  });
+}
