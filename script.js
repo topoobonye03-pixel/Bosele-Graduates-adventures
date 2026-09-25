@@ -46,7 +46,7 @@ boseleAI.innerHTML = `
   <div id="bosele-ai-chat">
     <div class="bosele-ai-header">
       <div>
-        <strong>Bosele AI Safari Planner ✨</strong>
+        <strong>Bosele AI Travel Consultant ✨</strong>
         <small>Learn. Explore. Grow.</small>
       </div>
       <button id="bosele-ai-close" aria-label="Close Bosele AI">×</button>
