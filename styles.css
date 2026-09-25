@@ -396,3 +396,37 @@ body{background:#f7f0e4}
     height: min(570px, calc(100vh - 95px));
   }
 }
+
+/* Bosele AI action buttons */
+.bosele-ai-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 12px;
+}
+
+.bosele-ai-action {
+  width: 100%;
+  display: block;
+  padding: 12px 14px;
+  border: 1px solid #d8cbb8;
+  border-radius: 12px;
+  background: #f7f1e7;
+  color: #123b2a;
+  text-align: center;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.bosele-ai-action.primary {
+  background: #c45f1a;
+  color: #ffffff;
+  border-color: #c45f1a;
+}
+
+.bosele-ai-action:hover {
+  opacity: 0.9;
+}
