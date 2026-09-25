@@ -279,7 +279,14 @@ document.addEventListener('DOMContentLoaded', () => {
         The AI ANSWER is shown first.
       */
       thinking.textContent = reply;
+// Force the new AI answer to become visible immediately
+requestAnimationFrame(() => {
+  aiMessages.scrollTop = aiMessages.scrollHeight;
+});
 
+setTimeout(() => {
+  aiMessages.scrollTop = aiMessages.scrollHeight;
+}, 100);
       /*
         Save conversation so follow-up questions
         can understand earlier answers.
