@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bosele-adventures-web.pages.dev/sitemap.xml
