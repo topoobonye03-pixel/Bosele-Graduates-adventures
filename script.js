@@ -68,19 +68,7 @@ boseleAI.innerHTML = `
 
   <button id="bosele-ai-send">Ask Bosele AI</button>
 
-  <div class="bosele-ai-actions">
-    <a class="bosele-ai-action primary" href="contact.html">
-      Request a Quote
-    </a>
 
-    <a class="bosele-ai-action" href="tel:+26774396369">
-      Call Bosele
-    </a>
-
-    <button type="button" class="bosele-ai-action" id="bosele-ai-new-trip">
-      Start New Trip
-    </button>
-  </div>
 
   <small class="bosele-ai-note">
     AI planning assistance. Confirm prices, dates and availability with Bosele.
@@ -146,8 +134,11 @@ async function askBoseleAI() {
     }
 
     reply.textContent =
-      data.reply || 'Please contact Bosele Graduates Adventures for assistance.';
-  } catch (error) {
+    data.reply || 'Please contact Bosele Graduates Adventures for assistance.';
+
+showBoseleActions();
+
+} catch (error) {
     reply.textContent =
       'Sorry, Bosele AI is temporarily unavailable. Please try again.';
   } finally {
@@ -158,13 +149,48 @@ async function askBoseleAI() {
 }
 
 aiSend.addEventListener('click', askBoseleAI);
-const newTripButton = document.getElementById('bosele-ai-new-trip');
-
-newTripButton.addEventListener('click', () => {
-  aiMessages.innerHTML = '';
-  aiInput.value = '';
-  aiInput.focus();
+// Send with Enter (Shift + Enter creates a new line)
+aiInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter' && !event.shiftKey) {
+    event.preventDefault();
+    askBoseleAI();
+  }
 });
+
+// Show booking/contact options only after AI has replied
+function showBoseleActions() {
+  if (document.getElementById('bosele-ai-actions')) return;
+
+  const actions = document.createElement('div');
+  actions.id = 'bosele-ai-actions';
+  actions.className = 'bosele-ai-actions';
+
+  actions.innerHTML = `
+    <a class="bosele-ai-action primary" href="contact.html">
+      Request a Quote
+    </a>
+
+    <a class="bosele-ai-action" href="tel:+26774396369">
+      Call Bosele
+    </a>
+
+    <button type="button" class="bosele-ai-action" id="bosele-ai-new-trip">
+      Start New Trip
+    </button>
+  `;
+
+  aiMessages.parentNode.insertBefore(actions, aiMessages.nextSibling);
+
+  document
+    .getElementById('bosele-ai-new-trip')
+    .addEventListener('click', () => {
+      aiMessages.innerHTML = '';
+      actions.remove();
+      aiInput.value = '';
+      aiInput.focus();
+    });
+}
+
 const heroAIButton = document.getElementById('hero-bosele-ai-button');
 
 if (heroAIButton) {
